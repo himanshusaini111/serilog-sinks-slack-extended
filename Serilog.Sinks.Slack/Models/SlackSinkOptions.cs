@@ -85,6 +85,12 @@ namespace Serilog.Sinks.SlackExtended.Models
         public LogEventLevel MinimumLogEventLevel { get; set; }
 
         /// <summary>
+        /// A must have property in the Log Event for it to be logged via the sink. If <c>null</c> all logs are eligle for logging depending on other checks. 
+        /// The default is <c>null</c>.
+        /// </summary>
+        public string MustHaveProperty { get; set; }
+
+        /// <summary>
         /// Optional: A list of properties (including exception properties) that are included in the messages.
         /// If this property is set along with <see cref="PropertyDenyList"/>, this takes precedence.
         /// </summary>
@@ -111,6 +117,12 @@ namespace Serilog.Sinks.SlackExtended.Models
         /// for an unbounded queue. The default is <c>100000</c>.
         /// </summary>
         public int? QueueLimit { get; set; } = 100000;
+
+        /// <summary>
+        /// Maximum length of a Field in Slack Message Attachment.
+        /// The default is <c>1000</c>.
+        /// </summary>
+        public int MaxFieldLength { get; set; } = 1000;
 
         /// <summary>
         /// Maps options to <see cref="PeriodicBatchingSinkOptions"/> for use with <see cref="PeriodicBatchingSink"/> ctor.

@@ -63,7 +63,9 @@ namespace Serilog.Sinks.SlackExtended
             List<string> propertyAllowList = null,
             List<string> propertyDenyList = null,
             string timestampFormat = null,
-            int? queueLimit = 100000)
+            int? queueLimit = 100000,
+            string mustHaveProperty = null,
+            int maxFieldLength = 1000)
         {
 
             var formatter = new MessageTemplateTextFormatter(outputTemplate, formatProvider);
@@ -84,7 +86,9 @@ namespace Serilog.Sinks.SlackExtended
                 propertyAllowList,
                 propertyDenyList,
                 timestampFormat,
-                queueLimit);
+                queueLimit,
+                mustHaveProperty,
+                maxFieldLength);
         }
 
         /// <summary>
@@ -136,7 +140,9 @@ namespace Serilog.Sinks.SlackExtended
             List<string> propertyAllowList = null,
             List<string> propertyDenyList = null,
             string timestampFormat = null,
-            int? queueLimit = 100000)
+            int? queueLimit = 100000,
+            string mustHaveProperty = null,
+            int maxFieldLength = 1000)
         {
             var slackSinkOptions = new SlackSinkOptions
             {
@@ -152,7 +158,9 @@ namespace Serilog.Sinks.SlackExtended
                 PropertyDenyList = propertyDenyList,
                 ShowExceptionAttachments = showExceptionAttachments,
                 TimestampFormat = timestampFormat,
-                QueueLimit = queueLimit
+                QueueLimit = queueLimit,
+                MustHaveProperty = mustHaveProperty,
+                MaxFieldLength = maxFieldLength,
             };
 
             if (batchSizeLimit.HasValue)
