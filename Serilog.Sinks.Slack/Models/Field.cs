@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Serilog.Sinks.Slack.Models
+namespace Serilog.Sinks.SlackExtended.Models
 {
     public class Field
     {

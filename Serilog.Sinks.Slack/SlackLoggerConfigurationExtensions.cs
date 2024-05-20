@@ -4,9 +4,9 @@ using Serilog.Configuration;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
-using Serilog.Sinks.Slack.Models;
+using Serilog.Sinks.SlackExtended.Models;
 
-namespace Serilog.Sinks.Slack
+namespace Serilog.Sinks.SlackExtended
 {
     /// <summary>
     /// Provides extension methods on <see cref="LoggerSinkConfiguration"/>.
@@ -63,7 +63,9 @@ namespace Serilog.Sinks.Slack
             List<string> propertyAllowList = null,
             List<string> propertyDenyList = null,
             string timestampFormat = null,
-            int? queueLimit = 100000)
+            int? queueLimit = 100000,
+            string mustHaveProperty = null,
+            int maxFieldLength = 1000)
         {
 
             var formatter = new MessageTemplateTextFormatter(outputTemplate, formatProvider);
@@ -84,7 +86,9 @@ namespace Serilog.Sinks.Slack
                 propertyAllowList,
                 propertyDenyList,
                 timestampFormat,
-                queueLimit);
+                queueLimit,
+                mustHaveProperty,
+                maxFieldLength);
         }
 
         /// <summary>
@@ -136,7 +140,9 @@ namespace Serilog.Sinks.Slack
             List<string> propertyAllowList = null,
             List<string> propertyDenyList = null,
             string timestampFormat = null,
-            int? queueLimit = 100000)
+            int? queueLimit = 100000,
+            string mustHaveProperty = null,
+            int maxFieldLength = 1000)
         {
             var slackSinkOptions = new SlackSinkOptions
             {
@@ -152,7 +158,9 @@ namespace Serilog.Sinks.Slack
                 PropertyDenyList = propertyDenyList,
                 ShowExceptionAttachments = showExceptionAttachments,
                 TimestampFormat = timestampFormat,
-                QueueLimit = queueLimit
+                QueueLimit = queueLimit,
+                MustHaveProperty = mustHaveProperty,
+                MaxFieldLength = maxFieldLength,
             };
 
             if (batchSizeLimit.HasValue)

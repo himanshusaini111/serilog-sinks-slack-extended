@@ -9,11 +9,11 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Sinks.PeriodicBatching;
-using Serilog.Sinks.Slack.Enums;
-using Serilog.Sinks.Slack.Helpers;
-using Serilog.Sinks.Slack.Models;
+using Serilog.Sinks.SlackExtended.Enums;
+using Serilog.Sinks.SlackExtended.Helpers;
+using Serilog.Sinks.SlackExtended.Models;
 
-namespace Serilog.Sinks.Slack
+namespace Serilog.Sinks.SlackExtended
 {
     /// <summary>
     /// Implements <see cref="ILogEventSink"/>, <see cref="IBatchedLogEventSink"/>, <see cref="IDisposable"/> and provides means needed for sending Serilog log events to Slack.
@@ -70,6 +70,7 @@ namespace Serilog.Sinks.Slack
             foreach (var logEvent in events)
             {
                 if (logEvent.Level < _options.MinimumLogEventLevel) continue;
+                if (!string.IsNullOrWhiteSpace(_options.MustHaveProperty) && !logEvent.Properties.ContainsKey(_options.MustHaveProperty)) continue;
                 var message = CreateMessage(logEvent);
                 var json = JsonConvert.SerializeObject(message, _jsonSerializerSettings);
                 await _client.PostAsync(_options.WebHookUrl, new StringContent(json));
@@ -189,7 +190,7 @@ namespace Serilog.Sinks.Slack
                 var attachment = new Attachment
                 {
                     Title = "Exception",
-                    Fallback = $"Exception: {logEvent.Exception.Message} \n {ShortenMessage(logEvent.Exception.StackTrace, 1000)}",
+                    Fallback = $"Exception: {logEvent.Exception.Message} \n {ShortenMessage(logEvent.Exception.StackTrace, _options.MaxFieldLength)}",
                     Color = _options.AttachmentColors[LogEventLevel.Fatal],
                     Fields = new List<Field>(),
                     MrkdwnIn = new List<string> { "fields" }
@@ -198,10 +199,10 @@ namespace Serilog.Sinks.Slack
                 AddAttachmentField(ref attachment, new Field { Title = "Message", Value = logEvent.Exception.Message });
                 AddAttachmentField(ref attachment, new Field { Title = "Type", Value = $"`{logEvent.Exception.GetFlattenedType()}`" });
 
-                AddAttachmentField(ref attachment, new Field { Title = "Exception", Value = $"```{ShortenMessage(logEvent.Exception.GetFlattenedMessage(), 1000)}```", Short = false });
+                AddAttachmentField(ref attachment, new Field { Title = "Exception", Value = $"```{ShortenMessage(logEvent.Exception.GetFlattenedMessage(), _options.MaxFieldLength)}```", Short = false });
 
                 if (!string.IsNullOrEmpty(logEvent.Exception.StackTrace))
-                    AddAttachmentField(ref attachment, new Field { Title = "Stack Trace", Value = $"```{ShortenMessage(logEvent.Exception.GetFlattenedStackTrace(), 1000)}```", Short = false });
+                    AddAttachmentField(ref attachment, new Field { Title = "Stack Trace", Value = $"```{ShortenMessage(logEvent.Exception.GetFlattenedStackTrace(), _options.MaxFieldLength)}```", Short = false });
 
                 if (attachment.Fields.Any())
                     yield return attachment;

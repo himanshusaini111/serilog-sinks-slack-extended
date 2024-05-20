@@ -4,7 +4,7 @@
     <a href="https://ci.appveyor.com/project/mgibas/serilog-sinks-slack/branch/master">
         <img src="https://ci.appveyor.com/api/projects/status/hgfjns15mkqih2lx/branch/master?svg=true"></img>
     </a>
-    <a href="https://www.nuget.org/packages/Serilog.Sinks.Slack/">
+    <a href="https://www.nuget.org/packages/Serilog.Sinks.SlackExtended/">
         <img src="https://img.shields.io/nuget/v/Serilog.Sinks.Slack.svg?style=flat-square"></img>
     </a>
 </p>
@@ -21,7 +21,7 @@ Simple and beautiful Serilog Slack sink :)
 NuGet
 ====
 ```
-Install-Package Serilog.Sinks.Slack
+Install-Package Serilog.Sinks.SlackExtended
 ```
 Sample
 ====

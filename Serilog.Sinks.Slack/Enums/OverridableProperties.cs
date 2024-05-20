@@ -1,6 +1,6 @@
-﻿using Serilog.Sinks.Slack.Models;
+﻿using Serilog.Sinks.SlackExtended.Models;
 
-namespace Serilog.Sinks.Slack.Enums
+namespace Serilog.Sinks.SlackExtended.Enums
 {
     /// <summary>
     /// These properties can be used to override options at a message level.
