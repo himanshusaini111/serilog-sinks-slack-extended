@@ -1,8 +1,8 @@
 ﻿using System;
 using Serilog.Events;
-using Serilog.Sinks.Slack.Models;
+using Serilog.Sinks.SlackExtended.Models;
 
-namespace Serilog.Sinks.Slack.Sample
+namespace Serilog.Sinks.SlackExtended.Sample
 {
     class Program
     {

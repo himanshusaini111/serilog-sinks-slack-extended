@@ -1,15 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30413.136
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{721763D1-0FA7-42C4-A71B-91BBE31BB57D}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\publish.yml = .github\workflows\publish.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Slack", "Serilog.Sinks.Slack\Serilog.Sinks.Slack.csproj", "{518E39AE-AD6E-43DC-BECE-7C5F68A88C95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.SlackExtended", "Serilog.Sinks.Slack\Serilog.Sinks.SlackExtended.csproj", "{518E39AE-AD6E-43DC-BECE-7C5F68A88C95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Slack.Sample", "Serilog.Sinks.Slack.Sample\Serilog.Sinks.Slack.Sample.csproj", "{E2BDF0A2-DAE4-2930-84ED-A095FD7F349C}"
 EndProject
@@ -30,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C90EED4-722B-4F14-9521-588488FE0990}
 	EndGlobalSection
 EndGlobal

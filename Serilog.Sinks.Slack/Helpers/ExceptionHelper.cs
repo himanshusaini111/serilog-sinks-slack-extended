@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Serilog.Sinks.Slack.Helpers
+namespace Serilog.Sinks.SlackExtended.Helpers
 {
     public static class ExceptionHelper
     {

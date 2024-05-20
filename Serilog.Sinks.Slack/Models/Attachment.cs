@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Serilog.Sinks.Slack.Models
+namespace Serilog.Sinks.SlackExtended.Models
 {
     public class Attachment
     {

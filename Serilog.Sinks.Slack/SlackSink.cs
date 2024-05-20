@@ -9,11 +9,11 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Sinks.PeriodicBatching;
-using Serilog.Sinks.Slack.Enums;
-using Serilog.Sinks.Slack.Helpers;
-using Serilog.Sinks.Slack.Models;
+using Serilog.Sinks.SlackExtended.Enums;
+using Serilog.Sinks.SlackExtended.Helpers;
+using Serilog.Sinks.SlackExtended.Models;
 
-namespace Serilog.Sinks.Slack
+namespace Serilog.Sinks.SlackExtended
 {
     /// <summary>
     /// Implements <see cref="ILogEventSink"/>, <see cref="IBatchedLogEventSink"/>, <see cref="IDisposable"/> and provides means needed for sending Serilog log events to Slack.

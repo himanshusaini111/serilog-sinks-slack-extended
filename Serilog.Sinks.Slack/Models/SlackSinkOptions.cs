@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Serilog.Events;
 using Serilog.Sinks.PeriodicBatching;
-using Serilog.Sinks.Slack.Enums;
+using Serilog.Sinks.SlackExtended.Enums;
 
-namespace Serilog.Sinks.Slack.Models
+namespace Serilog.Sinks.SlackExtended.Models
 {
     /// <summary>
     /// Container for all Slack sink configuration.

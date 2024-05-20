@@ -4,9 +4,9 @@ using Serilog.Configuration;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
-using Serilog.Sinks.Slack.Models;
+using Serilog.Sinks.SlackExtended.Models;
 
-namespace Serilog.Sinks.Slack
+namespace Serilog.Sinks.SlackExtended
 {
     /// <summary>
     /// Provides extension methods on <see cref="LoggerSinkConfiguration"/>.
